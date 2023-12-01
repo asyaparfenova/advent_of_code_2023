@@ -1,6 +1,6 @@
 # advent_of_code_2023
 
-![Advent_of_code_cover Photo Credit: @prachipalwe|unsplash.com](https://github.com/asyaparfenova/advent_of_code_2023/blob/main/cover.jpg?raw=true "Photo Credit: 
+![Advent_of_code_cover Photo Credit: @prachipalwe|unsplash.com](https://github.com/asyaparfenova/advent_of_code_2023/blob/main/cover.png?raw=true "Photo Credit: 
 @prachipalwe|unsplash.com")
 
 In this repository I am posting solutions for "Advent of Code 2022".
