@@ -1,6 +1,6 @@
 import sys
 
-NUMBERS = ['one','two','three','four','five','six','seven','eight','nine']
+DIGITS = ['one','two','three','four','five','six','seven','eight','nine']
 
 def get_data(filename):
     """
@@ -41,13 +41,14 @@ def check_number(line, position):
          otherwise an empty string. If the provided position is out of range or leads to an error,
          an empty string is returned.
     """
+    dgs = DIGITS
     try:
-        if line[position:position+3] in NUMBERS:
-            return str(NUMBERS.index(line[position:position+3])+1)
-        elif line[position:position+4] in NUMBERS:
-            return str(NUMBERS.index(line[position:position+4])+1)
-        elif line[position:position+5] in NUMBERS:
-            return str(NUMBERS.index(line[position:position+5])+1)
+        if line[position:position+3] in dgs:
+            return str(dgs.index(line[position:position+3])+1)
+        elif line[position:position+4] in dgs:
+            return str(dgs.index(line[position:position+4])+1)
+        elif line[position:position+5] in dgs:
+            return str(dgs.index(line[position:position+5])+1)
         else:
             return ""
     except:
