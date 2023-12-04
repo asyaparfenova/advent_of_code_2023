@@ -1,6 +1,8 @@
+""" --- Day 3: Gear Ratios ---
+https://adventofcode.com/2023/day/3"""
+
 import sys
 import numpy as np
-
 
 def get_data(filename):
     """
