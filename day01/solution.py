@@ -1,3 +1,6 @@
+""" --- Day 2: Trebuchet?! ---
+https://adventofcode.com/2023/day/1"""
+
 import sys
 
 DIGITS = ['one','two','three','four','five','six','seven','eight','nine']

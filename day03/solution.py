@@ -1,6 +1,8 @@
+""" --- Day 3: Gear Ratios ---
+https://adventofcode.com/2023/day/3"""
+
 import sys
 import numpy as np
-
 
 def get_data(filename):
     """
@@ -28,7 +30,7 @@ def read_data(input_data):
                    input string.
     """
     data = [line for line in input_data.split("\n") if line]
-    mtrx = np.array([list(a) for a in data]) #.astype(int)
+    mtrx = np.array([list(a) for a in data])
     return mtrx
 
 def check_surroundings(arr, row, start_num, end_num):

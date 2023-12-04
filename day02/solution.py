@@ -1,3 +1,6 @@
+""" --- Day 2: Cube Conundrum ---
+https://adventofcode.com/2023/day/2"""
+
 import sys
 import re
 
@@ -29,23 +32,21 @@ def read_data(input_data):
     """
     return [line for line in input_data.split("\n") if line]
 
-def count_colour(colour, reveal):
+def count_colour(colour, game):
     """
-    Counts cubes of given colour in one game reveal.
+    Counts max cubes of given colour inside one game.
 
     Parameters:
     colour (str): A colour of the cubes number of which we should know,
-    reveal (str): A part of the game (one cubes reveal).
+    game (str): A game output (all reveals).
 
     Returns:
-    int: How many cubes were revealed.
+    int: Max of cubes of given colour that were revealed in the game.
     """
     rgx = rf"(\d+) {colour}"
-    rgx_res = (re.findall(rgx, reveal))
+    rgx_res = (re.findall(rgx, game))
     if len(rgx_res) > 0:
-        return int(rgx_res[0])
-    else:
-        return 0
+        return max([int(s) for s in rgx_res])
 
 def get_answer(input_data):
     """
@@ -65,44 +66,21 @@ def get_answer(input_data):
     for game in data:
         num_re = r"Game (\d+):"
         game_n = int(re.findall(num_re, game)[0])
-        game_possible = True
-        i = 0
-        reveals = game.split(';')
-        while game_possible and i < len(reveals):
-            reveal = reveals[i]
-            rn = count_colour('red', reveal)
-            gn = count_colour('green', reveal)
-            bn = count_colour('blue', reveal)
-            if rn <= limit[0] and gn <= limit[1] and bn <= limit[2]:
-                i += 1
-            else:
-                game_possible = False
-                break
-        if game_possible:
+        rn = count_colour('red', game)
+        gn = count_colour('green', game)
+        bn = count_colour('blue', game)
+        if rn <= limit[0] and gn <= limit[1] and bn <= limit[2]:
             possible_games.append(game_n)
     answer1 = sum(possible_games)
     # play game 2
     game_powers = []
     for game in data:
-        i = 0
-        reveals = game.split(';')
-        min_r, min_g, min_b = 0,0,0
-        while i < len(reveals):
-            reveal = reveals[i]
-            rn = count_colour('red', reveal)
-            if min_r == 0 or rn > min_r:
-                min_r = rn
-            gn = count_colour('green', reveal)
-            if min_g == 0 or gn > min_g:
-                min_g = gn
-            bn = count_colour('blue', reveal)
-            if min_b == 0 or bn > min_b:
-                min_b = bn
-            i += 1
-        game_powers.append(min_r*min_g*min_b)
+        rn = count_colour('red', game)
+        gn = count_colour('green', game)
+        bn = count_colour('blue', game)
+        game_powers.append(rn * gn * bn)
     answer2 = sum(game_powers)
     return answer1, answer2
-
 
 if __name__ == "__main__":
     filename = "input.txt"
