@@ -3,7 +3,7 @@
 ![Advent_of_code_cover Photo Credit: @prachipalwe|unsplash.com](https://github.com/asyaparfenova/advent_of_code_2023/blob/main/cover.png?raw=true "Photo Credit: 
 @prachipalwe|unsplash.com")
 
-In this repository, I am posting solutions for "Advent of Code 2023".
+In this repository, I am posting solutions for [Advent of Code 2023](https://adventofcode.com/2023).
 
 Structure of the repository:
 - each folder named dayN contains multiple testN.txt, input.txt and solution.py
