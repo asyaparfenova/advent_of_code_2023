@@ -10,5 +10,5 @@ Structure of the repository:
 - testN.txt is/are example(s) given in the task description that has a correct answer in the text of the task;
 - input.txt is my competition's input;
 - solution.py is a Python file that includes function reading input, parsing it and producing a solution;
-- to test code run solution.py with test file name as an argument, to produce prod solution - without arguments.
+- to test code run solution.py with test file name as an argument - e.g. `python solution.py test01`, to produce prod solution - without arguments - e.g. `python solution.py`.
 
