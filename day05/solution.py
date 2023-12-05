@@ -29,9 +29,22 @@ def read_data(input_data):
     numpy.ndarray: 2D NumPy array where each element is a character from the
                    input string.
     """
-    data = [line for line in input_data.split("\n") if line]
-    mtrx = np.array([list(a) for a in data]) #.astype(int) - in case we want matrix
-    return mtrx
+    data = [line for line in input_data.split("\n\n") if line]
+    return data
+
+def parse_data(input_data):
+    data = read_data(input_data)
+    maps = {}
+    seeds = [int(i) for i in data[0].split(' ')[1:]]
+    for block in data[1:]:
+        key = block.split('\n')[0].split(' ')[0].split('-to-')[0]
+        val = block.split('\n')[0].split(' ')[0].split('-to-')[1]
+        maps[key] = [val,[]]
+        for line in block.split('\n')[1:]:
+            [dest_n, start_n, rng] = [int(i) for i in line.split(' ')]
+            maps[key][1].append([dest_n, start_n, rng])
+    #print(maps)
+    return seeds, maps
 
 def get_answer(input_data):
     """
@@ -44,8 +57,24 @@ def get_answer(input_data):
     tuple: A tuple of two elements, each an integer representing the answer in
            each of the two parts og the daily AoC Task.
     """
-    data = read_data(input_data)
-    return data, 0
+    seeds, maps = parse_data(input_data)
+    #game1
+    locations = []
+    for seed in seeds:
+        key = 'seed'
+        val = seed
+        while key != 'location':
+            add_to_val = 0
+            for rng in maps[key][1]:
+                if rng[1] <= val <= (rng[1] + rng[2] - 1):
+                    add_to_val = rng[0] - rng[1]
+            val += add_to_val
+            key = maps[key][0]
+        locations.append(val)
+    answer1 = min(locations)
+    # game2
+    answer2 = "To be continued..."
+    return answer1, answer2
 
 if __name__ == "__main__":
     filename = "input.txt"
